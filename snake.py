@@ -3,14 +3,15 @@ import pygame
 class Snake(pygame.sprite.Sprite):
 
     def __init__(self, game):
+        super().__init__()
 
         self.game = game
 
         # load the head image
-        self.head_image = pygame.image.load('assets/objects/snake head.png')
-        self.head_image_rect = self.head_image.get_rect()
-        self.head_image = pygame.transform.scale(self.head_image,
-                                                 (self.head_image.get_width() / 4, self.head_image.get_height() / 4))
+        self.image = pygame.image.load('assets/objects/snake head.png')
+        self.rect = self.image.get_rect()
+        self.image = pygame.transform.scale(self.image,
+                                                 (self.image.get_width() / 4, self.image.get_height() / 4))
 
         # load the body image
         self.body_image = pygame.image.load('assets/objects/snake body.png')
@@ -25,25 +26,31 @@ class Snake(pygame.sprite.Sprite):
 
     def check_wall_collision(self):
         collision = False
-        if (self.direction == 1 and self.head_image_rect.x >= self.game.screen.get_width()) \
-                or (self.direction == 2 and self.head_image_rect.y >= self.game.screen.get_height())\
-                or (self.direction == 3 and self.head_image_rect.x <= 0)\
-                or (self.direction == 4 and self.head_image_rect.y <= 0):
+        if (self.direction == 1 and self.rect.x >= self.game.screen.get_width()) \
+                or (self.direction == 2 and self.rect.y >= self.game.screen.get_height())\
+                or (self.direction == 3 and self.rect.x <= 0)\
+                or (self.direction == 4 and self.rect.y <= 0):
             collision = True
 
         return collision
     def move(self):
         if self.check_wall_collision():
             self.game.game_over()
+            self.game.add_score(-10)
+
+        for apple in self.game.check_collision(self, self.game.all_apples):
+            self.game.game_over()
+            self.game.add_score(10)
+            apple.remove()
 
         if self.direction == 1:
-            self.head_image_rect.x += self.velocity
+            self.rect.x += self.velocity
         if self.direction == 2:
-            self.head_image_rect.y += self.velocity
+            self.rect.y += self.velocity
         if self.direction == 3:
-            self.head_image_rect.x -= self.velocity
+            self.rect.x -= self.velocity
         if self.direction == 4:
-            self.head_image_rect.y -= self.velocity
+            self.rect.y -= self.velocity
     def change_direction(self, value):
         self.direction = value
 
