@@ -1,7 +1,8 @@
 import pygame
+from game import Game
 
 pygame.init()
-pygame.mixer.init()
+pygame.mixer.init(size=32)
 
 # set the FPS
 clock = pygame.time.Clock()
@@ -19,6 +20,9 @@ background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 running = True
 
+# load the game
+game = Game()
+
 while running:
 
     clock.tick(FPS)
@@ -29,6 +33,8 @@ while running:
     # set background
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
+
+    game.update(screen)
 
     for event in pygame.event.get():
 
