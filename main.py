@@ -2,7 +2,7 @@ import pygame
 from game import Game
 
 pygame.init()
-pygame.mixer.init(size=32)
+pygame.mixer.init()
 
 # set the FPS
 clock = pygame.time.Clock()
@@ -21,7 +21,7 @@ background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 running = True
 
 # load the game
-game = Game()
+game = Game(screen)
 
 while running:
 
@@ -34,13 +34,24 @@ while running:
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
 
-    game.update(screen)
+    game.update()
 
     for event in pygame.event.get():
 
         # if the window is closing
         if event.type == pygame.QUIT:
-            pygame.quit()
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+            else:
+                game.pressed[event.key] = True
+
+        if event.type == pygame.KEYUP:
+            game.pressed[event.key] = False
+
+pygame.quit()
 
 
 

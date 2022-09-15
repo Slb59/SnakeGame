@@ -18,14 +18,34 @@ class Snake(pygame.sprite.Sprite):
 
         self.all_body = pygame.sprite.Group()
 
-    def move_right(self):
-        self.head_image_rect.x += 1
+        # direction of the snake
+        self.direction = 1
 
-    def move_left(self):
-        self.head_image_rect.x += 1
+        self.velocity = 3
 
-    def move_up(self):
-        self.head_image_rect.y -= 1
+    def check_wall_collision(self):
+        collision = False
+        if (self.direction == 1 and self.head_image_rect.x >= self.game.screen.get_width()) \
+                or (self.direction == 2 and self.head_image_rect.y >= self.game.screen.get_height())\
+                or (self.direction == 3 and self.head_image_rect.x <= 0)\
+                or (self.direction == 4 and self.head_image_rect.y <= 0):
+            collision = True
 
-    def move_down(self):
-        self.head_image_rect.y += 1
+        return collision
+    def move(self):
+        if self.check_wall_collision():
+            self.game.game_over()
+
+        if self.direction == 1:
+            self.head_image_rect.x += self.velocity
+        if self.direction == 2:
+            self.head_image_rect.y += self.velocity
+        if self.direction == 3:
+            self.head_image_rect.x -= self.velocity
+        if self.direction == 4:
+            self.head_image_rect.y -= self.velocity
+    def change_direction(self, value):
+        self.direction = value
+
+
+
