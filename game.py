@@ -3,6 +3,7 @@ from sound import SoundManager
 from snake import Snake
 import pygame
 from apple import Apple
+import numpy as np
 
 class Game():
     def __init__(self):
@@ -20,8 +21,6 @@ class Game():
         self.background = pygame.image.load('assets/ui/background 2.png')
         self.background = pygame.transform.scale(self.background, (self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
 
-
-
         # manage sound
         self.sound_manager = SoundManager()
         self.sound_manager.play_ambiant()
@@ -37,6 +36,8 @@ class Game():
         self.all_apples = pygame.sprite.Group()
 
         self.score = 0
+        self.frame_iteration = 0
+        self.reward = 0
 
         # tick between 2 game
         self.cooldown = 2000
@@ -54,11 +55,12 @@ class Game():
         self.all_apples = pygame.sprite.Group()
         self.is_game_over = True
         self.last_cooldown = pygame.time.get_ticks()
+        self.frame_iteration = 0
 
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
-    def update(self):
+    def update(self, action):
 
         # set background
         self.screen.fill((0, 0, 0))
@@ -73,6 +75,9 @@ class Game():
         # draw the body
         self.snake.all_body.draw(self.screen)
 
+        # update frame iteration
+        self.frame_iteration += 1
+
         if self.is_game_over:
 
             time_now = pygame.time.get_ticks()
@@ -83,6 +88,16 @@ class Game():
 
         else:
             self.snake.move()
+
+        clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
+        idx = clock_wise.index(self.snake.direction)
+
+        if np.array_equal(action, [1, 0, 0]):
+            new_dir = clock_wise[idx]  # no change
+        if np.array_equal(action, [0, 1, 0]):
+            next_idx = (idx + 1) % 4
+            new_dir = clock_wise[next_idx]  # right turn
+
 
         # change direction
         if self.pressed.get(pygame.K_RIGHT):

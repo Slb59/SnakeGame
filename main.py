@@ -19,7 +19,7 @@ while running:
     # update the screen
     pygame.display.flip()
 
-    game.update()
+    game.update([1, 0, 0])
 
     for event in pygame.event.get():
 

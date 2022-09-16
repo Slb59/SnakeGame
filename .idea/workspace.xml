@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add class Direction">
-      <change afterPath="$PROJECT_DIR$/bodysnake.py" afterDir="false" />
+    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add the snake body">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -156,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663333795420</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add the snake body">
+      <created>1663344786267</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663344786267</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,6 +187,7 @@
     <MESSAGE value="The snake move and dead if collision" />
     <MESSAGE value="Add Apple and collision with apple modify the score" />
     <MESSAGE value="Add class Direction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add class Direction" />
+    <MESSAGE value="Add the snake body" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the snake body" />
   </component>
 </project>
