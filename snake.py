@@ -1,5 +1,6 @@
 import pygame
 from direction import Direction
+from bodysnake import BodySnake
 
 class Snake(pygame.sprite.Sprite):
 
@@ -14,16 +15,14 @@ class Snake(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image,
                                                  (self.image.get_width() / 4, self.image.get_height() / 4))
 
-        # load the body image
-        self.body_image = pygame.image.load('assets/objects/snake body.png')
-        self.body_image_rect = self.body_image.get_rect()
-
-        self.all_body = pygame.sprite.Group()
-
-        # direction of the snake
+      # direction of the snake
         self.direction = Direction.RIGHT
 
-        self.velocity = 5
+        self.velocity = 8
+        self.length = 10
+
+        self.all_body = pygame.sprite.Group()
+        self.all_body.add(BodySnake(self))
 
     def check_wall_collision(self):
         collision = False
@@ -35,13 +34,40 @@ class Snake(pygame.sprite.Sprite):
 
         return collision
     def move(self):
-        if self.check_wall_collision():
+
+        print(self.rect.x)
+        print(self.all_body.sprites()[len(self.all_body) - 1].rect.x)
+
+        # add a body near the snake head
+        if self.direction == Direction.RIGHT:
+            if self.rect.x - self.all_body.sprites()[len(self.all_body) - 1].rect.x >= self.image.get_width()*2:
+                self.all_body.add(BodySnake(self))
+        if self.direction == Direction.LEFT:
+            if -(self.rect.x - self.all_body.sprites()[len(self.all_body) - 1].rect.x) >= self.image.get_width()*2:
+                self.all_body.add(BodySnake(self))
+        if self.direction == Direction.UP:
+            if -(self.rect.y - self.all_body.sprites()[len(self.all_body) - 1].rect.y) >= self.image.get_height()*2:
+                self.all_body.add(BodySnake(self))
+        if self.direction == Direction.DOWN:
+            if ((self.rect.y - self.all_body.sprites()[len(self.all_body) - 1].rect.y) >= self.image.get_height()*2):
+                self.all_body.add(BodySnake(self))
+
+        # remove the last body
+        if len(self.all_body) > self.length:
+            self.all_body.remove(self.all_body.sprites()[0])
+
+        if self.check_wall_collision() or self.game.check_collision(self, self.all_body):
+            self.rect.x = 0
+            self.rect.y = 0
             self.game.game_over()
             self.game.add_score(-10)
+            self.all_body = pygame.sprite.Group()
+            self.all_body.add(BodySnake(self))
 
         for apple in self.game.check_collision(self, self.game.all_apples):
             self.game.game_over()
             self.game.add_score(10)
+            self.all_body.add(BodySnake(self))
 
         if self.direction == Direction.RIGHT:
             self.rect.x += self.velocity
@@ -51,6 +77,9 @@ class Snake(pygame.sprite.Sprite):
             self.rect.x -= self.velocity
         if self.direction == Direction.UP:
             self.rect.y -= self.velocity
+
+
+
     def change_direction(self, value):
         self.direction = value
 
