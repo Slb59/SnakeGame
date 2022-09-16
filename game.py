@@ -1,3 +1,4 @@
+from direction import Direction
 from sound import SoundManager
 from snake import Snake
 import pygame
@@ -25,7 +26,7 @@ class Game():
         self.score = 0
 
         # tick between 2 game
-        self.cooldown = 3000
+        self.cooldown = 2000
         self.last_cooldown = pygame.time.get_ticks()
 
         self.start()
@@ -36,7 +37,9 @@ class Game():
         self.is_game_over = False
 
     def game_over(self):
+        self.all_apples = pygame.sprite.Group()
         self.is_game_over = True
+        self.last_cooldown = pygame.time.get_ticks()
 
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
@@ -50,7 +53,10 @@ class Game():
         self.all_apples.draw(self.screen)
 
         if self.is_game_over:
-            self.snake.rect = (0, 0)
+
+            self.snake.rect.x = 0
+            self.snake.rect.y = 0
+            self.snake.direction = Direction.RIGHT
 
             time_now = pygame.time.get_ticks()
             print(time_now - self.last_cooldown)
@@ -63,10 +69,10 @@ class Game():
 
         # change direction
         if self.pressed.get(pygame.K_RIGHT):
-            self.snake.change_direction(1)
+            self.snake.change_direction(Direction.RIGHT)
         elif self.pressed.get(pygame.K_LEFT):
-            self.snake.change_direction(3)
+            self.snake.change_direction(Direction.LEFT)
         elif self.pressed.get(pygame.K_UP):
-            self.snake.change_direction(4)
+            self.snake.change_direction(Direction.UP)
         elif self.pressed.get(pygame.K_DOWN):
-            self.snake.change_direction(2)
+            self.snake.change_direction(Direction.DOWN)
