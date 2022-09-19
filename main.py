@@ -3,9 +3,7 @@ from game import Game
 
 # set the FPS
 clock = pygame.time.Clock()
-FPS = 100
-
-
+FPS = 10
 
 running = True
 
@@ -19,7 +17,7 @@ while running:
     # update the screen
     pygame.display.flip()
 
-    game.update([1, 0, 0])
+    game.update()
 
     for event in pygame.event.get():
 

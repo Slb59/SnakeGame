@@ -14,17 +14,22 @@ class BodySnake(pygame.sprite.Sprite):
 
         self.snake = snake
 
-        if self.snake.direction == Direction.RIGHT:
-            self.rect.x = self.snake.rect.x - self.snake.image.get_width()
-            self.rect.y = self.snake.rect.y
-        if self.snake.direction == Direction.LEFT:
-            self.rect.x = self.snake.rect.x + self.snake.image.get_width()
-            self.rect.y = self.snake.rect.y
-        if self.snake.direction == Direction.UP:
-            self.rect.x = self.snake.rect.x
-            self.rect.y = self.snake.rect.y + self.snake.image.get_height()
-        if self.snake.direction == Direction.DOWN:
-            self.rect.x = self.snake.rect.x
-            self.rect.y = self.snake.rect.y - self.snake.image.get_height()
+    def set_position(self, x, y):
+        self.rect.x = x
+        self.rect.y = y
+
+
+        # if self.snake.direction == Direction.RIGHT:
+        #     self.rect.x = self.snake.rect.x - self.snake.image.get_width()
+        #     self.rect.y = self.snake.rect.y
+        # if self.snake.direction == Direction.LEFT:
+        #     self.rect.x = self.snake.rect.x + self.snake.image.get_width()
+        #     self.rect.y = self.snake.rect.y
+        # if self.snake.direction == Direction.UP:
+        #     self.rect.x = self.snake.rect.x
+        #     self.rect.y = self.snake.rect.y + self.snake.image.get_height()
+        # if self.snake.direction == Direction.DOWN:
+        #     self.rect.x = self.snake.rect.x
+        #     self.rect.y = self.snake.rect.y - self.snake.image.get_height()
 
 

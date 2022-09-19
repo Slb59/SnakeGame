@@ -3,7 +3,7 @@ from sound import SoundManager
 from snake import Snake
 import pygame
 from apple import Apple
-import numpy as np
+
 
 class Game():
     def __init__(self):
@@ -60,7 +60,7 @@ class Game():
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
-    def update(self, action):
+    def update(self):
 
         # set background
         self.screen.fill((0, 0, 0))
@@ -89,14 +89,6 @@ class Game():
         else:
             self.snake.move()
 
-        clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
-        idx = clock_wise.index(self.snake.direction)
-
-        if np.array_equal(action, [1, 0, 0]):
-            new_dir = clock_wise[idx]  # no change
-        if np.array_equal(action, [0, 1, 0]):
-            next_idx = (idx + 1) % 4
-            new_dir = clock_wise[next_idx]  # right turn
 
 
         # change direction
