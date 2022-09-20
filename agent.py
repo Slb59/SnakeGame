@@ -6,6 +6,7 @@ from direction import Direction
 from collections import deque
 from point import Point
 from model import Linear_QNet, QTrainer
+from helper import plot
 
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
@@ -130,7 +131,11 @@ class Agent:
 
                 print('Game', agent.n_games, 'Score', score, 'Record', record)
 
-                # TODO : plot
+                plot_scores.append(score)
+                total_score += score
+                mean_score = total_score / agent.n_games
+                plot_mean_scores.append(mean_score)
+                plot(plot_scores, plot_mean_scores)
 
     if __name__ == '__main__':
         train()

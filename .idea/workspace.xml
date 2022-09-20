@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add agent functions">
-      <change afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add model file">
+      <change afterPath="$PROJECT_DIR$/helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent.py" afterDir="false" />
     </list>
@@ -43,7 +43,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="20220915-SnakeGame" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -203,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663667541538</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add model file">
+      <created>1663675505132</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675505132</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,6 +240,7 @@
     <MESSAGE value="create agent class" />
     <MESSAGE value="Add walls" />
     <MESSAGE value="Add agent functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add agent functions" />
+    <MESSAGE value="Add model file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add model file" />
   </component>
 </project>
