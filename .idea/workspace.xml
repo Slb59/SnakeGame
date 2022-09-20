@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add helper file">
+    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Fix bugs on runtime">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/point.py" beforeDir="false" afterPath="$PROJECT_DIR$/point.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/snake.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663676881282</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fix bugs on runtime">
+      <created>1663680826788</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1663680826788</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,6 +260,7 @@
     <MESSAGE value="Add agent functions" />
     <MESSAGE value="Add model file" />
     <MESSAGE value="Add helper file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add helper file" />
+    <MESSAGE value="Fix bugs on runtime" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bugs on runtime" />
   </component>
 </project>

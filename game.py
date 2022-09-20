@@ -4,8 +4,8 @@ from snake import Snake
 import pygame
 from apple import Apple
 from wall import Wall
-from point import Point
 
+FPS = 60
 
 class Game:
     def __init__(self):
@@ -29,10 +29,6 @@ class Game:
 
         self.snake = Snake(self)
 
-
-        # manage pressed key
-        self.pressed = {}
-
         self.is_game_over = False
 
         # the group of apples
@@ -51,6 +47,8 @@ class Game:
 
         self.draw_walls()
         self.start()
+
+        self.clock = pygame.time.Clock()
 
     def draw_walls(self):
         for i in range(self.SCREEN_WIDTH):
@@ -77,17 +75,19 @@ class Game:
 
     def add_score(self, amount):
         self.score += amount
+        self.reward = amount
     def start(self):
+
+        self.snake.direction = Direction.RIGHT
+
+        self.score = 0
+        self.all_apples = pygame.sprite.Group()
         self.all_apples.add(Apple(self))
         self.is_game_over = False
-        self.snake.direction = Direction.RIGHT
-        print(self.all_apples)
+        self.frame_iteration = 0
 
     def game_over(self):
-        self.all_apples = pygame.sprite.Group()
         self.is_game_over = True
-        self.last_cooldown = pygame.time.get_ticks()
-        self.frame_iteration = 0
 
     def is_collision(self, sprite):
         if self.check_collision(sprite, self.all_walls) or self.check_collision(sprite, self.snake.all_body):
@@ -98,7 +98,30 @@ class Game:
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
-    def update(self, action):
+    def play_step(self, action):
+
+
+
+        # update frame iteration
+        self.frame_iteration += 1
+
+        if (self.is_collision(self.snake)) or (self.frame_iteration > 100 * self.snake.length):
+
+            self.snake.go_start()
+            self.game_over()
+            self.add_score(-10)
+            self.snake.all_body = pygame.sprite.Group()
+            self.snake.set_body()
+
+        else:
+            self.snake.move(action)
+
+        self.update()
+        self.clock.tick(FPS)
+
+        return self.reward, self.is_game_over, self.score
+
+    def update(self):
 
         # set background
         self.screen.fill((0, 0, 0))
@@ -116,21 +139,7 @@ class Game:
         # draw the body
         self.snake.all_body.draw(self.screen)
 
-        # update frame iteration
-        self.frame_iteration += 1
+        # update the screen
+        pygame.display.flip()
 
-        print(self.frame_iteration, self.all_apples)
 
-        if self.is_game_over:
-
-            time_now = pygame.time.get_ticks()
-
-            if time_now - self.last_cooldown > self.cooldown:
-                self.start()
-                self.last_cooldown = pygame.time.get_ticks()
-
-        else:
-            print('snake moving')
-            self.snake.move(action)
-
-        return self.reward, self.is_game_over, self.score

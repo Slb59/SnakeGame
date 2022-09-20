@@ -3,10 +3,6 @@ from game import Game
 from agent import Agent
 from helper import plot
 
-# set the FPS
-clock = pygame.time.Clock()
-FPS = 10
-
 running = True
 
 
@@ -20,19 +16,13 @@ game = Game()
 
 while running:
 
-    clock.tick(FPS)
-
-    # update the screen
-    pygame.display.flip()
-
     # get old state
-    print(game.all_apples)
     state_old = agent.get_state(game)
     # get move
     final_move = agent.get_action(state_old)
     # perform move and get new state
-    reward, done, score = game.update(final_move)
-    print(game.all_apples)
+    reward, done, score = game.play_step(final_move)
+
     state_new = agent.get_state(game)
 
     # train the short memory
@@ -40,6 +30,8 @@ while running:
 
     # remember
     agent.remember(state_old, final_move, reward, state_new, done)
+
+    print('Game', agent.n_games, 'Score', score, 'Record', record, 'done:', done)
 
     if done:
         # train the long memory, plot the result
@@ -58,6 +50,13 @@ while running:
         mean_score = total_score / agent.n_games
         plot_mean_scores.append(mean_score)
         plot(plot_scores, plot_mean_scores)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+
 
 pygame.quit()
 

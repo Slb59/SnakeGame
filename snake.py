@@ -34,34 +34,21 @@ class Snake(pygame.sprite.Sprite):
         self.rect.y = 200
 
     def set_body(self):
-        for i in range(self.length):
+        for i in range(1, self.length):
             new_body = BodySnake(self)
             new_body.set_position(self.rect.x - self.image.get_width()*i, self.rect.y)
             self.all_body.add(new_body)
 
     def move(self, action=[1, 0, 0]):
 
-        if (self.game.is_collision(self)) \
-                or (self.game.frame_iteration > 100 * self.length):
+        print(action)
 
-            print('restart the game')
-            if self.game.is_collision(self):
-                print('collision!!')
-            self.go_start()
-            self.game.game_over()
-            self.game.add_score(-10)
-            self.all_body = pygame.sprite.Group()
-            self.set_body()
-            self.game.reward = -10
-            self.game.start()
-
-        for apple in self.game.check_collision(self, self.game.all_apples):
+        if self.game.check_collision(self, self.game.all_apples):
             print('find the apple')
             self.game.game_over()
             self.game.add_score(10)
             self.all_body.add(BodySnake(self))
             self.length += 1
-            self.game.reward = 10
 
         clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
         idx = clock_wise.index(self.direction)
