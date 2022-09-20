@@ -41,8 +41,7 @@ class Snake(pygame.sprite.Sprite):
 
     def move(self, action=[1, 0, 0]):
 
-        if (self.game.check_collision(self, self.game.all_walls)) \
-                or (self.game.check_collision(self, self.all_body)) \
+        if (self.game.is_collision(self)) \
                 or (self.game.frame_iteration > 100 * self.length):
             self.go_start()
             self.game.game_over()

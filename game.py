@@ -4,9 +4,10 @@ from snake import Snake
 import pygame
 from apple import Apple
 from wall import Wall
+from point import Point
 
 
-class Game():
+class Game:
     def __init__(self):
 
         pygame.init()
@@ -87,6 +88,10 @@ class Game():
         self.is_game_over = True
         self.last_cooldown = pygame.time.get_ticks()
         self.frame_iteration = 0
+
+    def is_collision(self, sprite):
+        return self.check_collision(sprite, self.all_walls) \
+            or self.check_collision(sprite, self.snake.all_body)
 
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
