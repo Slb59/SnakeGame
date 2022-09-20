@@ -18,3 +18,4 @@ Assets :
 
 https://freesound.org/
 https://taftcreates.itch.io/snake-assets
+https://shubibubi.itch.io/nature-things?download

@@ -3,6 +3,7 @@ from sound import SoundManager
 from snake import Snake
 import pygame
 from apple import Apple
+from wall import Wall
 
 
 class Game():
@@ -27,13 +28,17 @@ class Game():
 
         self.snake = Snake(self)
 
+
         # manage pressed key
         self.pressed = {}
 
         self.is_game_over = False
 
-        # the group off apples
+        # the group of apples
         self.all_apples = pygame.sprite.Group()
+
+        # the group of walls
+        self.all_walls = pygame.sprite.Group()
 
         self.score = 0
         self.frame_iteration = 0
@@ -43,10 +48,36 @@ class Game():
         self.cooldown = 2000
         self.last_cooldown = pygame.time.get_ticks()
 
+        self.draw_walls()
         self.start()
+
+    def draw_walls(self):
+        for i in range(self.SCREEN_WIDTH):
+            wall = Wall()
+            wall.rect.x += wall.image.get_width()*i
+            wall.rect.y = - 20
+            self.all_walls.add(wall)
+
+            wall = Wall()
+            wall.rect.x += wall.image.get_width()*i
+            wall.rect.y = self.SCREEN_HEIGHT-10
+            self.all_walls.add(wall)
+
+        for i in range(self.SCREEN_HEIGHT):
+            wall = Wall()
+            wall.rect.x = - 20
+            wall.rect.y += wall.image.get_height()*i
+            self.all_walls.add(wall)
+
+            wall = Wall()
+            wall.rect.y += wall.image.get_height()*i
+            wall.rect.x = self.SCREEN_WIDTH-10
+            self.all_walls.add(wall)
+
     def add_score(self, amount):
         self.score += amount
     def start(self):
+
         self.all_apples.add(Apple(self))
         self.is_game_over = False
         self.snake.direction = Direction.RIGHT
@@ -71,6 +102,9 @@ class Game():
 
         # draw the apple
         self.all_apples.draw(self.screen)
+
+        # draw the walls
+        self.all_walls.draw(self.screen)
 
         # draw the body
         self.snake.all_body.draw(self.screen)

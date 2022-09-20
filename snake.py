@@ -16,14 +16,22 @@ class Snake(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image,
                                             (self.image.get_width() / 4, self.image.get_height() / 4))
 
+        # the start position
+        self.go_start()
+
         # direction of the snake
         self.direction = Direction.RIGHT
 
         self.velocity = self.image.get_width()
+        self.size = self.image.get_width()
         self.length = 10
 
         self.all_body = pygame.sprite.Group()
         self.set_body()
+
+    def go_start(self):
+        self.rect.x = 200
+        self.rect.y = 200
 
     def set_body(self):
         for i in range(self.length):
@@ -31,22 +39,12 @@ class Snake(pygame.sprite.Sprite):
             new_body.set_position(self.rect.x - self.image.get_width()*i, self.rect.y)
             self.all_body.add(new_body)
 
-    def check_wall_collision(self):
-        collision = False
-        if (self.direction == Direction.RIGHT and self.rect.x >= self.game.screen.get_width()) \
-                or (self.direction == Direction.DOWN and self.rect.y >= self.game.screen.get_height()) \
-                or (self.direction == Direction.LEFT and self.rect.x <= 0) \
-                or (self.direction == Direction.UP and self.rect.y <= 0):
-            collision = True
-
-        return collision
-
     def move(self, action=[1, 0, 0]):
 
-        if (self.check_wall_collision()) \
+        if (self.game.check_collision(self, self.game.all_walls)) \
+                or (self.game.check_collision(self, self.all_body)) \
                 or (self.game.frame_iteration > 100 * self.length):
-            self.rect.x = 0
-            self.rect.y = 0
+            self.go_start()
             self.game.game_over()
             self.game.add_score(-10)
             self.all_body = pygame.sprite.Group()
