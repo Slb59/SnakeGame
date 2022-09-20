@@ -4,8 +4,9 @@ from snake import Snake
 import pygame
 from apple import Apple
 from wall import Wall
+import math
 
-FPS = 60
+FPS = 80
 
 class Game:
     def __init__(self):
@@ -51,10 +52,11 @@ class Game:
         self.clock = pygame.time.Clock()
 
     def draw_walls(self):
-        for i in range(self.SCREEN_WIDTH):
+        wall = Wall()
+        for i in range(math.ceil(self.SCREEN_WIDTH/wall.image.get_width())):
             wall = Wall()
             wall.rect.x += wall.image.get_width()*i
-            wall.rect.y = - 20
+            wall.rect.y = - 5
             self.all_walls.add(wall)
 
             wall = Wall()
@@ -62,9 +64,9 @@ class Game:
             wall.rect.y = self.SCREEN_HEIGHT-10
             self.all_walls.add(wall)
 
-        for i in range(self.SCREEN_HEIGHT):
+        for i in range(math.ceil(self.SCREEN_HEIGHT/wall.image.get_height())):
             wall = Wall()
-            wall.rect.x = - 20
+            wall.rect.x = - 5
             wall.rect.y += wall.image.get_height()*i
             self.all_walls.add(wall)
 
@@ -100,21 +102,22 @@ class Game:
 
     def play_step(self, action):
 
-
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
         # update frame iteration
         self.frame_iteration += 1
 
-        if (self.is_collision(self.snake)) or (self.frame_iteration > 100 * self.snake.length):
+        self.snake.move(action)
 
+        if (self.is_collision(self.snake)) or (self.frame_iteration > 100 * self.snake.length):
             self.snake.go_start()
             self.game_over()
             self.add_score(-10)
             self.snake.all_body = pygame.sprite.Group()
             self.snake.set_body()
-
-        else:
-            self.snake.move(action)
 
         self.update()
         self.clock.tick(FPS)

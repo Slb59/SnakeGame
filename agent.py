@@ -24,6 +24,7 @@ class Agent:
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
     def get_state(self, game):
+
         point_l = Point(game.snake, game.snake.rect.x - game.snake.size, game.snake.rect.y)
         point_r = Point(game.snake, game.snake.rect.x + game.snake.size, game.snake.rect.y)
         point_u = Point(game.snake, game.snake.rect.x, game.snake.rect.y - game.snake.size)

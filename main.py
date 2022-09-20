@@ -5,7 +5,6 @@ from helper import plot
 
 running = True
 
-
 plot_scores = []
 plot_mean_scores = []
 total_score = 0
@@ -51,10 +50,7 @@ while running:
         plot_mean_scores.append(mean_score)
         plot(plot_scores, plot_mean_scores)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            quit()
+
 
 
 
