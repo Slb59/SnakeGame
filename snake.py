@@ -43,14 +43,20 @@ class Snake(pygame.sprite.Sprite):
 
         if (self.game.is_collision(self)) \
                 or (self.game.frame_iteration > 100 * self.length):
+
+            print('restart the game')
+            if self.game.is_collision(self):
+                print('collision!!')
             self.go_start()
             self.game.game_over()
             self.game.add_score(-10)
             self.all_body = pygame.sprite.Group()
             self.set_body()
             self.game.reward = -10
+            self.game.start()
 
         for apple in self.game.check_collision(self, self.game.all_apples):
+            print('find the apple')
             self.game.game_over()
             self.game.add_score(10)
             self.all_body.add(BodySnake(self))

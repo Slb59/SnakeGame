@@ -78,10 +78,10 @@ class Game:
     def add_score(self, amount):
         self.score += amount
     def start(self):
-
         self.all_apples.add(Apple(self))
         self.is_game_over = False
         self.snake.direction = Direction.RIGHT
+        print(self.all_apples)
 
     def game_over(self):
         self.all_apples = pygame.sprite.Group()
@@ -90,13 +90,15 @@ class Game:
         self.frame_iteration = 0
 
     def is_collision(self, sprite):
-        return self.check_collision(sprite, self.all_walls) \
-            or self.check_collision(sprite, self.snake.all_body)
+        if self.check_collision(sprite, self.all_walls) or self.check_collision(sprite, self.snake.all_body):
+            return True
+        else:
+            return False
 
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
-    def update(self):
+    def update(self, action):
 
         # set background
         self.screen.fill((0, 0, 0))
@@ -117,6 +119,8 @@ class Game:
         # update frame iteration
         self.frame_iteration += 1
 
+        print(self.frame_iteration, self.all_apples)
+
         if self.is_game_over:
 
             time_now = pygame.time.get_ticks()
@@ -126,16 +130,7 @@ class Game:
                 self.last_cooldown = pygame.time.get_ticks()
 
         else:
-            self.snake.move()
+            print('snake moving')
+            self.snake.move(action)
 
-
-
-        # change direction
-        if self.pressed.get(pygame.K_RIGHT):
-            self.snake.change_direction(Direction.RIGHT)
-        elif self.pressed.get(pygame.K_LEFT):
-            self.snake.change_direction(Direction.LEFT)
-        elif self.pressed.get(pygame.K_UP):
-            self.snake.change_direction(Direction.UP)
-        elif self.pressed.get(pygame.K_DOWN):
-            self.snake.change_direction(Direction.DOWN)
+        return self.reward, self.is_game_over, self.score

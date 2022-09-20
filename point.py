@@ -2,9 +2,10 @@ import pygame
 
 class Point(pygame.sprite.Sprite):
 
-    def __init__(self, x, y):
+    def __init__(self, snake, x, y):
         super().__init__()
 
+        self.snake = snake
 
         self.image = pygame.image.load('assets/objects/red-circle.png')
         self.rect = self.image.get_rect()
