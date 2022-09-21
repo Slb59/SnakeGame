@@ -39,16 +39,11 @@ class Snake(pygame.sprite.Sprite):
             new_body.set_position(self.rect.x - self.image.get_width()*i, self.rect.y)
             self.all_body.add(new_body)
 
+    def add_body(self):
+        self.all_body.add(BodySnake(self))
+        self.length += 1
+
     def move(self, action=[1, 0, 0]):
-
-        print(action)
-
-        if self.game.check_collision(self, self.game.all_apples):
-            print('find the apple')
-            self.game.game_over()
-            self.game.add_score(10)
-            self.all_body.add(BodySnake(self))
-            self.length += 1
 
         clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
         idx = clock_wise.index(self.direction)

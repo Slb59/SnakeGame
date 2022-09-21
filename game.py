@@ -75,9 +75,8 @@ class Game:
             wall.rect.x = self.SCREEN_WIDTH-10
             self.all_walls.add(wall)
 
-    def add_score(self, amount):
-        self.score += amount
-        self.reward = amount
+
+
     def start(self):
 
         self.snake.direction = Direction.RIGHT
@@ -115,9 +114,16 @@ class Game:
         if (self.is_collision(self.snake)) or (self.frame_iteration > 100 * self.snake.length):
             self.snake.go_start()
             self.game_over()
-            self.add_score(-10)
+            self.reward = -10
             self.snake.all_body = pygame.sprite.Group()
             self.snake.set_body()
+
+        if self.check_collision(self.snake, self.all_apples):
+            print('find the apple')
+            self.game_over()
+            self.snake.add_body()
+            self.score += 1
+            self.reward = 10
 
         self.update()
         self.clock.tick(FPS)

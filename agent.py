@@ -20,7 +20,7 @@ class Agent:
         self.epsilon = 0  # randomless
         self.gamma = 0.9  # discount rate
         self.memory = deque(maxlen=MAX_MEMORY)
-        self.model = Linear_QNet(11, 10, 3)
+        self.model = Linear_QNet(11, 256, 3)
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
     def get_state(self, game):
@@ -92,16 +92,12 @@ class Agent:
         if random.randint(0, 200) < self.epsilon:
 
             move = random.randint(0, 2)
-            print('exploration', move)
             final_move[move] = 1
         else:
-            print('exploitation')
             state0 = torch.tensor(state, dtype=torch.float)
             prediction = self.model(state0)
-            print('prediction=', prediction)
             move = torch.argmax(prediction).item()
             final_move[move] = 1
-        print('final move', final_move)
         return final_move
 
 
