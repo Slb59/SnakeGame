@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Add the sound manager">
-      <change afterPath="$PROJECT_DIR$/snake.py" afterDir="false" />
+    <list default="true" id="31f7355a-db54-4b33-8da3-1e52d85ee504" name="Changes" comment="Fix speed bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.pth" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/snake.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="background" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,14 +39,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/brico/Documents/8_Informatique/1_Python/20220915-SnakeGame",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/brico/Documents/8_Informatique/1_Python/20220915-SnakeGame&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.main (1)">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="20220915-SnakeGame" />
@@ -126,7 +130,126 @@
       <option name="project" value="LOCAL" />
       <updated>1663246440221</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add the snake class and draw the head">
+      <created>1663247709043</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663247709043</updated>
+    </task>
+    <task id="LOCAL-00005" summary="The snake move and dead if collision">
+      <created>1663251750314</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663251750314</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Apple and collision with apple modify the score">
+      <created>1663254664913</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663254664913</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add class Direction">
+      <created>1663333795420</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1663333795420</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add the snake body">
+      <created>1663344786267</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663344786267</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add frame iterator + reward">
+      <created>1663347412706</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1663347412706</updated>
+    </task>
+    <task id="LOCAL-00010" summary="create agent class">
+      <created>1663572010690</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1663572010690</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add walls">
+      <created>1663664037702</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663664037702</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add walls">
+      <created>1663664044601</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663664044601</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add agent functions">
+      <created>1663667534387</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1663667534387</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add agent functions">
+      <created>1663667541538</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1663667541538</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add model file">
+      <created>1663675505132</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675505132</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add helper file">
+      <created>1663676881282</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1663676881282</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix bugs on runtime">
+      <created>1663680826788</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1663680826788</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Try to increase speed">
+      <created>1663699743130</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1663699743130</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fix speed bug">
+      <created>1663702927621</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663702927621</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fix speed bug">
+      <created>1663702934160</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663702934160</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +270,20 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Set the background" />
     <MESSAGE value="Add the sound manager" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add the sound manager" />
+    <MESSAGE value="Add the snake class and draw the head" />
+    <MESSAGE value="The snake move and dead if collision" />
+    <MESSAGE value="Add Apple and collision with apple modify the score" />
+    <MESSAGE value="Add class Direction" />
+    <MESSAGE value="Add the snake body" />
+    <MESSAGE value="Add frame iterator + reward" />
+    <MESSAGE value="create agent class" />
+    <MESSAGE value="Add walls" />
+    <MESSAGE value="Add agent functions" />
+    <MESSAGE value="Add model file" />
+    <MESSAGE value="Add helper file" />
+    <MESSAGE value="Fix bugs on runtime" />
+    <MESSAGE value="Try to increase speed" />
+    <MESSAGE value="Fix speed bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix speed bug" />
   </component>
 </project>
