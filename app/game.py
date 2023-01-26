@@ -1,9 +1,9 @@
-from direction import Direction
-from sound import SoundManager
+from utils.direction import Direction
+from sound.sound import SoundManager
 from snake import Snake
 import pygame
-from apple import Apple
-from wall import Wall
+from apple.apple import Apple
+from wall.wall import Wall
 import math
 
 FPS = 80

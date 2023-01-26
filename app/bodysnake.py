@@ -1,5 +1,5 @@
 import  pygame
-from direction import Direction
+
 
 class BodySnake(pygame.sprite.Sprite):
 

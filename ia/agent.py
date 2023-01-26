@@ -1,10 +1,9 @@
 import torch
 import random
 import numpy as np
-from game import Game
-from direction import Direction
+from utils.direction import Direction
 from collections import deque
-from point import Point
+from app.point import Point
 from model import Linear_QNet, QTrainer
 
 

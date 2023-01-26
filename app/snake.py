@@ -1,6 +1,6 @@
 import pygame
-from direction import Direction
-from bodysnake import BodySnake
+from utils.direction import Direction
+from app.bodysnake import BodySnake
 import numpy as np
 
 class Snake(pygame.sprite.Sprite):

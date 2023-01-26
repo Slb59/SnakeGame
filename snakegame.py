@@ -1,7 +1,7 @@
 import pygame
-from game import Game
-from agent import Agent
-from helper import plot
+from app.game import Game
+from ia.agent import Agent
+from utils.helper import plot
 
 running = True
 
@@ -49,9 +49,6 @@ while running:
         mean_score = total_score / agent.n_games
         plot_mean_scores.append(mean_score)
         plot(plot_scores, plot_mean_scores)
-
-
-
 
 
 pygame.quit()
