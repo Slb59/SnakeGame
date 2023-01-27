@@ -2,3 +2,4 @@ pygame==2.1.2
 numpy==1.24.1
 matplotlib==3.6.3
 ipython==8.8.0
+torch==1.13.1
