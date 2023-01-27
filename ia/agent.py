@@ -4,7 +4,7 @@ import numpy as np
 from utils.direction import Direction
 from collections import deque
 from app.point import Point
-from model import Linear_QNet, QTrainer
+from .model import Linear_QNet, QTrainer
 
 
 MAX_MEMORY = 100_000
